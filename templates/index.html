@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% if not player %}
+    <div class="card">
+      <h1>歡迎來到冒險者經濟網頁版</h1>
+      <p>請輸入你的冒險者暱稱，開始遊玩本遊戲。</p>
+      <form method="post" action="{{ url_for('index') }}">
+        <label for="username">你的暱稱</label>
+        <input id="username" name="username" required placeholder="輸入你的冒險者暱稱" />
+        <input class="button" type="submit" value="開始遊玩" />
+      </form>
+    </div>
+  {% else %}
+    <div class="card">
+      <h1>歡迎回來，{{ player }}！</h1>
+      <p>已登入，請前往控制台開始你的冒險。</p>
+      <a class="button" href="{{ url_for('dashboard') }}">前往控制台</a>
+    </div>
+  {% endif %}
+{% endblock %}

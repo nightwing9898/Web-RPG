@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="card">
+    <h1>使用背包道具</h1>
+    {% if choices %}
+      <form method="post" action="{{ url_for('use_item') }}">
+        <label for="item_name">選擇要使用的道具</label>
+        <select id="item_name" name="item_name">
+          {% for item in choices %}
+            <option value="{{ item }}">{{ item }}</option>
+          {% endfor %}
+        </select>
+        <input class="button" type="submit" value="使用道具" />
+      </form>
+    {% else %}
+      <p>你的背包目前沒有可使用的道具。</p>
+    {% endif %}
+    <a class="button" href="{{ url_for('dashboard') }}">回到控制台</a>
+  </div>
+{% endblock %}
